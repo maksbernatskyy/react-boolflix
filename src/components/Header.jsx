@@ -12,9 +12,10 @@ export default function Header() {
                 <div>
                     <h5 className="fw-bold text-danger text-uppercase">boolflix</h5>
                 </div>
-                
+
                 {/* Search */}
                 <Form />
+                
             </div>
           </header>
         </>
