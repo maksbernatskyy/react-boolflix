@@ -2,8 +2,13 @@ import { useGlobal } from "../contexts/GlobalContext"
 import { useEffect } from "react"
 import axios from "axios"
 import { API_KEY } from "../api/config"
+import Flag from "react-world-flags"
+import flags from "../../public/flags"
 
 export default function Products() {
+
+    {/* Array of flags */}
+    <flags />
 
     const {movies, setMovies, search, submit} = useGlobal()
 
@@ -36,7 +41,7 @@ export default function Products() {
                                             <span>{thisMovie.original_title}</span>
                                         </li>
                                         <li>
-                                            <span>{thisMovie.original_language}</span>
+                                            <Flag code={flags[thisMovie.original_language]} height={20} />
                                         </li>
                                         <li>
                                             <span>{thisMovie.vote_average}</span>
