@@ -6,6 +6,7 @@ import Flag from "react-world-flags"
 import flags from "../../public/flags"
 import { BASE_URL_IMG } from "../api/config"
 
+
 export default function Products() {
 
     {/* Array of flags */}
