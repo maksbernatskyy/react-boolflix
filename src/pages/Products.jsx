@@ -37,7 +37,7 @@ export default function Products() {
                     data.map((thisData) => thisData.original_language !== 'ru' && (                      
                         <div key={thisData.id} className="col">
                             <div className="card bg-black text-white border-danger h-100">
-                                <img className="card-img-top" src={thisData.poster_path ? `${BASE_URL_IMG}${thisData.poster_path}` : `${BASE_URL_IMG}${thisData.backdrop_path}`} alt="" />
+                                <img id="image" src={thisData.poster_path ? `${BASE_URL_IMG}${thisData.poster_path}` : `${BASE_URL_IMG}${thisData.backdrop_path}`} alt="" />
                                 <div className="card-body">
                                     <ul className="list-unstyled">
                                         <li>

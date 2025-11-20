@@ -5,3 +5,19 @@ body{
   background-color: black;
   color: white;
 }
+
+.card{
+  position: relative;
+
+  &:hover{
+    #image{
+      display: none;
+    }
+  }
+}
+
+#image{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
