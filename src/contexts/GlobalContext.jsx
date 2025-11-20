@@ -9,11 +9,16 @@ function GlobalProvider({ children }) {
     {/* Variables state to share */}
     const [movies, setMovies] = useState([])
 
+    {/* Variables of the form */}
+    const [search, setSearch] = useState('')
+
     return (
         <GlobalContext.Provider
           value={{
             movies,
             setMovies,
+            search,
+            setSearch
           }}
         >
             {children}
