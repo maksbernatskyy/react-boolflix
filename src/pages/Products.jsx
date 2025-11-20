@@ -5,8 +5,7 @@ import { API_KEY } from "../api/config"
 
 export default function Products() {
 
-    const {movies, setMovies} = useGlobal()
-    const {search} = useGlobal()
+    const {movies, setMovies, search, submit} = useGlobal()
 
     function fetchMovies() {
         axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${search}`)
@@ -14,7 +13,7 @@ export default function Products() {
         .catch((err) => console.error('Errore:', err))
     }
 
-    useEffect(fetchMovies, [search])
+    useEffect(fetchMovies, [submit])
 
     return (
         <>
