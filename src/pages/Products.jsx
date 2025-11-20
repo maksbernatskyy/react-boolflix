@@ -32,7 +32,7 @@ export default function Products() {
             <div className="mb-5">
                 <h1 className="text-uppercase">products</h1>
             </div>
-            <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row.cols-lg-4 g-3">
+            <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-6 g-3">
                 {
                     data.map((thisData) => thisData.original_language !== 'ru' && (                      
                         <div key={thisData.id} className="col">

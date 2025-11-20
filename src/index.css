@@ -8,6 +8,7 @@ body{
 
 .card{
   position: relative;
+  max-width: 14rem;
 
   &:hover{
     #image{
@@ -20,4 +21,5 @@ body{
   position: absolute;
   height: 100%;
   width: 100%;
+  border-radius: inherit;
 }
