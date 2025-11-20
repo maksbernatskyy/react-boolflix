@@ -10,11 +10,16 @@ export default function Products() {
     {/* Array of flags */}
     <flags />
 
-    const {movies, setMovies, search, submit} = useGlobal()
+    const {data, setData, search, submit} = useGlobal()
 
     function fetchMovies() {
-        axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${search}`)
-        .then((res) => setMovies(res.data.results))
+        Promise.all([
+            axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${search}`),
+            axios.get(`https://api.themoviedb.org/3/search/tv?api_key=${API_KEY}&query=${search}`)
+        ])
+          .then(([moviesRes, seriesRes]) => {
+            setData([...moviesRes.data.results, ...seriesRes.data.results])
+          })
         .catch((err) => console.error('Errore:', err))
     }
 
@@ -26,9 +31,9 @@ export default function Products() {
             <div className="mb-5">
                 <h1 className="text-uppercase">products</h1>
             </div>
-            <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row.cols-lg-4">
+            <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row.cols-lg-4 g-3">
                 {
-                    movies.map((thisMovie) => thisMovie.original_language !== 'ru' && (                      
+                    data.map((thisMovie) => thisMovie.original_language !== 'ru' && (                      
                         <div key={thisMovie.id} className="col">
                             <div className="card bg-black text-white border-danger h-100">
                                 <img className="card-img-top" src={thisMovie.poster_path} alt="" />

@@ -7,7 +7,7 @@ const GlobalContext = createContext()
 function GlobalProvider({ children }) {
 
     {/* Variables state to share */}
-    const [movies, setMovies] = useState([])
+    const [data, setData] = useState([])
 
     {/* Variables of the form */}
     const [search, setSearch] = useState('')
@@ -18,8 +18,8 @@ function GlobalProvider({ children }) {
     return (
         <GlobalContext.Provider
           value={{
-            movies,
-            setMovies,
+            data,
+            setData,
             search,
             setSearch,
             submit,
