@@ -1,8 +1,15 @@
+import { useGlobal } from "../contexts/GlobalContext"
+
 export default function Form({movieName, setMovieName}) {
+
+    const {submit, setSubmit} = useGlobal()
 
     const handleSubmit = (e) => {
         e.preventDefault()
+
+        submit ? setSubmit(false) : setSubmit(true)
     }
+    console.log(submit)
 
     return (
         <>

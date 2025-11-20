@@ -12,13 +12,18 @@ function GlobalProvider({ children }) {
     {/* Variables of the form */}
     const [search, setSearch] = useState('')
 
+    {/* State variable need for search products only on the submit */}
+    const [submit, setSubmit] = useState(true)
+
     return (
         <GlobalContext.Provider
           value={{
             movies,
             setMovies,
             search,
-            setSearch
+            setSearch,
+            submit,
+            setSubmit
           }}
         >
             {children}

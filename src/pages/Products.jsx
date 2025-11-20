@@ -26,8 +26,8 @@ export default function Products() {
                 {
                     movies.map((thisMovie) => (
                         <div key={thisMovie.id} className="col">
-                            <div className="card bg-black text-white border-danger">
-
+                            <div className="card bg-black text-white border-danger h-100">
+                                <img className="card-img-top" src={thisMovie.poster_path} alt="" />
                                 <div className="card-body">
                                     <h5>{thisMovie.original_title}</h5>
                                 </div>
