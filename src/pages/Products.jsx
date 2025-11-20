@@ -40,21 +40,25 @@ export default function Products() {
                                 <img id="image" src={thisData.poster_path ? `${BASE_URL_IMG}${thisData.poster_path}` : `${BASE_URL_IMG}${thisData.backdrop_path}`} alt="" />
                                 <div className="card-body">
                                     <ul className="list-unstyled">
-                                        <li>
-                                            {
-                                                thisData.title ? <h5>{thisData.title}</h5> : <h5>{thisData.name}</h5>
-                                            }
+                                        {/* Title */}
+                                        <li className="mb-2">
+                                            <span><strong>Title:</strong> {thisData.title ? thisData.title : thisData.name}</span>
                                         </li>
-                                        <li>
-                                            {
-                                                thisData.original_title ? <span>{thisData.original_title}</span> : <span>{thisData.original_name}</span>
-                                            }
+                                        {/* Original title */}
+                                        <li className="mb-2">
+                                            <span><strong>Original title:</strong> {thisData.original_title ? thisData.original_title : thisData.original_name}</span>
                                         </li>
-                                        <li>
+                                        {/* Date */}
+                                        <li className="mb-2">
+                                            <span><strong>Date:</strong> {thisData.release_date ? thisData.release_date : thisData.first_air_date}</span>
+                                        </li>
+                                        {/* Original language */}
+                                        <li className="mb-2">
                                             <Flag code={flags[thisData.original_language]} height={20} />
                                         </li>
+                                        {/* Average */}
                                         <li>
-                                            <span>{thisData.vote_average}</span>
+                                            <span><strong>Average:</strong> {thisData.vote_average}</span>
                                         </li>
                                     </ul>
                                 </div>

@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import DefaultLayout from "./components/DefaultLayout"
-import HomePage from "./pages/HomePage"
 import Products from "./pages/Products"
 
 function App() {
@@ -10,8 +9,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route element={<DefaultLayout />}>
-            <Route index element={<HomePage />} />
-            <Route path="/products" element={<Products />} />
+            <Route index element={<Products />} />
           </Route>
         </Routes>
       </BrowserRouter>
