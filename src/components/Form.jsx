@@ -2,7 +2,6 @@ export default function Form({movieName, setMovieName}) {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-
     }
 
     return (

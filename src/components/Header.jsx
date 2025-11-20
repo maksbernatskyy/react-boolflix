@@ -5,7 +5,7 @@ import { useGlobal } from "../contexts/GlobalContext"
 
 export default function Header() {
 
-  
+  const {search, setSearch} = useGlobal()
 
   return (
    <>
@@ -18,7 +18,10 @@ export default function Header() {
         </div>
 
         {/* Search */}
-        <Form />
+        <Form 
+          movieName={search}
+          setMovieName={setSearch}
+        />
       </div>
     </header>
   </>
