@@ -28,7 +28,20 @@ export default function Products() {
                             <div className="card bg-black text-white border-danger h-100">
                                 <img className="card-img-top" src={thisMovie.poster_path} alt="" />
                                 <div className="card-body">
-                                    <h5>{thisMovie.original_title}</h5>
+                                    <ul className="list-unstyled">
+                                        <li>
+                                            <h5>{thisMovie.title}</h5>
+                                        </li>
+                                        <li>
+                                            <span>{thisMovie.original_title}</span>
+                                        </li>
+                                        <li>
+                                            <span>{thisMovie.original_language}</span>
+                                        </li>
+                                        <li>
+                                            <span>{thisMovie.vote_average}</span>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
