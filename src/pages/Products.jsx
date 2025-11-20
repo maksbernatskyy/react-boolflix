@@ -4,6 +4,7 @@ import axios from "axios"
 import { API_KEY } from "../api/config"
 import Flag from "react-world-flags"
 import flags from "../../public/flags"
+import { BASE_URL_IMG } from "../api/config"
 
 export default function Products() {
 
@@ -33,23 +34,27 @@ export default function Products() {
             </div>
             <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row.cols-lg-4 g-3">
                 {
-                    data.map((thisMovie) => thisMovie.original_language !== 'ru' && (                      
-                        <div key={thisMovie.id} className="col">
+                    data.map((thisData) => thisData.original_language !== 'ru' && (                      
+                        <div key={thisData.id} className="col">
                             <div className="card bg-black text-white border-danger h-100">
-                                <img className="card-img-top" src={thisMovie.poster_path} alt="" />
+                                <img className="card-img-top" src={thisData.poster_path ? `${BASE_URL_IMG}${thisData.poster_path}` : `${BASE_URL_IMG}${thisData.backdrop_path}`} alt="" />
                                 <div className="card-body">
                                     <ul className="list-unstyled">
                                         <li>
-                                            <h5>{thisMovie.title}</h5>
+                                            {
+                                                thisData.title ? <h5>{thisData.title}</h5> : <h5>{thisData.name}</h5>
+                                            }
                                         </li>
                                         <li>
-                                            <span>{thisMovie.original_title}</span>
+                                            {
+                                                thisData.original_title ? <span>{thisData.original_title}</span> : <span>{thisData.original_name}</span>
+                                            }
                                         </li>
                                         <li>
-                                            <Flag code={flags[thisMovie.original_language]} height={20} />
+                                            <Flag code={flags[thisData.original_language]} height={20} />
                                         </li>
                                         <li>
-                                            <span>{thisMovie.vote_average}</span>
+                                            <span>{thisData.vote_average}</span>
                                         </li>
                                     </ul>
                                 </div>
