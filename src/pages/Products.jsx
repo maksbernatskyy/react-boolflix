@@ -18,14 +18,14 @@ export default function Products() {
     return (
         <>
           <div className="container">
-            <div>
-                <h1>products</h1>
+            <div className="mb-5">
+                <h1 className="text-uppercase">products</h1>
             </div>
             <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row.cols-lg-4">
                 {
                     movies.map((thisMovie) => (
                         <div key={thisMovie.id} className="col">
-                            <div className="card">
+                            <div className="card bg-black text-white border-danger">
 
                                 <div className="card-body">
                                     <h5>{thisMovie.original_title}</h5>
