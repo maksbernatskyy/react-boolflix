@@ -8,7 +8,7 @@ export default function Products() {
     const {movies, setMovies} = useGlobal()
 
     function fetchMovies() {
-        axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=Avengers`)
+        axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=matrix`)
         .then((res) => setMovies(res.data.results))
         .catch((err) => console.error('Errore:', err))
     }
