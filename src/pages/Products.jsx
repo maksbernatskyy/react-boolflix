@@ -23,7 +23,7 @@ export default function Products() {
             </div>
             <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row.cols-lg-4">
                 {
-                    movies.map((thisMovie) => thisMovie.original_language === 'en' && (                      
+                    movies.map((thisMovie) => thisMovie.original_language !== 'ru' && (                      
                         <div key={thisMovie.id} className="col">
                             <div className="card bg-black text-white border-danger h-100">
                                 <img className="card-img-top" src={thisMovie.poster_path} alt="" />
