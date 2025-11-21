@@ -7,7 +7,9 @@ import flags from "../../public/flags"
 import { BASE_URL_IMG } from "../api/config"
 import Stars from "../components/Stars"
 import Lottie from "react-lottie-player"
-import myAnimation from "../assets/Cute bear dancing.json"
+import myAnimationBear from "../assets/Cute bear dancing.json"
+import myAnimationCarError from "../assets/404 error page with cat (1).json"
+
 
 
 export default function Products() {
@@ -34,47 +36,54 @@ export default function Products() {
         <>
           <div className="container">
             <div>
-                <Lottie animationData={myAnimation} loop={true} play={true} />
+                <Lottie id="bear" animationData={myAnimationBear} loop={true} play={true} />
             </div>
-            <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-6 g-3">
-                {
-                    data.map((thisData) => thisData.original_language !== 'ru' && (                      
-                        <div key={thisData.id} className="col">
-                            <div className="card bg-black text-white border-danger h-100">
-                                {
-                                    thisData.backdrop_path && <img id="image" src={thisData.poster_path ? `${BASE_URL_IMG}${thisData.poster_path}` : `${BASE_URL_IMG}${thisData.backdrop_path}`} alt="" />
-                                }
-                                <div className="card-body">
-                                    <ul className="list-unstyled">
-                                        {/* Title */}
-                                        <li className="mb-2">
-                                            <span><strong>Title:</strong> {thisData.title ? thisData.title : thisData.name}</span>
-                                        </li>
-                                        {/* Original title */}
-                                        <li className="mb-2">
-                                            <span><strong>Original title:</strong> {thisData.original_title ? thisData.original_title : thisData.original_name}</span>
-                                        </li>
-                                        {/* Date */}
-                                        <li className="mb-2">
-                                            <span><strong>Date:</strong> {thisData.release_date ? thisData.release_date : thisData.first_air_date}</span>
-                                        </li>
-                                        {/* Original language */}
-                                        <li className="mb-2">
-                                            <Flag code={flags[thisData.original_language]} height={20} />
-                                        </li>
-                                        {/* Average */}
-                                        <li>
-                                           <Stars 
-                                             data={thisData}
-                                           /> 
-                                        </li>
-                                    </ul>
+
+            {
+                data.length === 0 ? (<Lottie id="cat" animationData={myAnimationCarError} loop={true} play={true} />)
+                : (
+                    <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-6 g-3">
+                        {
+                            data.map((thisData) => thisData.original_language !== 'ru' && (                      
+                               <div key={thisData.id} className="col">
+                                    <div className="card bg-black text-white border-danger h-100">
+                                        {
+                                            thisData.backdrop_path && <img id="image" src={thisData.poster_path ? `${BASE_URL_IMG}${thisData.poster_path}` : `${BASE_URL_IMG}${thisData.backdrop_path}`} alt="" />
+                                        }
+                                        <div className="card-body">
+                                            <ul className="list-unstyled">
+                                                {/* Title */}
+                                                <li className="mb-2">
+                                                    <span><strong>Title:</strong> {thisData.title ? thisData.title : thisData.name}</span>
+                                                </li>
+                                                {/* Original title */}
+                                                <li className="mb-2">
+                                                    <span><strong>Original title:</strong> {thisData.original_title ? thisData.original_title : thisData.original_name}</span>
+                                                </li>
+                                                {/* Date */}
+                                                <li className="mb-2">
+                                                    <span><strong>Date:</strong> {thisData.release_date ? thisData.release_date : thisData.first_air_date}</span>
+                                                </li>
+                                                {/* Original language */}
+                                                <li className="mb-2">
+                                                    <Flag code={flags[thisData.original_language]} height={20} />
+                                                </li>
+                                                {/* Average */}
+                                                <li>
+                                                    <Stars 
+                                                        data={thisData}
+                                                    /> 
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    ))
-                }
-            </div>
+                            ))
+                        }
+                    </div>
+                )
+            }
+            
           </div>
         </>
     )
