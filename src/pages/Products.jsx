@@ -1,5 +1,5 @@
 import { useGlobal } from "../contexts/GlobalContext"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import axios from "axios"
 import { API_KEY } from "../api/config"
 import Flag from "react-world-flags"
@@ -8,7 +8,7 @@ import { BASE_URL_IMG } from "../api/config"
 import Stars from "../components/Stars"
 import Lottie from "react-lottie-player"
 import myAnimationBear from "../assets/Cute bear dancing.json"
-import myAnimationCarError from "../assets/404 error page with cat (1).json"
+import myAnimationCarError from "../assets/404 error page with cat.json"
 
 
 
@@ -17,7 +17,10 @@ export default function Products() {
     {/* Array of flags */}
     <flags />
 
+    {/* useGlobal */}
     const {data, setData, search, submit} = useGlobal()
+
+    const [count, setCount] = useState(0)
 
     function fetchMovies() {
         Promise.all([
@@ -26,8 +29,9 @@ export default function Products() {
         ])
           .then(([moviesRes, seriesRes]) => {
             setData([...moviesRes.data.results, ...seriesRes.data.results])
+
+            setCount(count + 1)
           })
-        .catch((err) => console.error('Errore:', err))
     }
 
     useEffect(fetchMovies, [submit])
@@ -40,6 +44,7 @@ export default function Products() {
             </div>
 
             {
+                count === 1 ? '' :
                 data.length === 0 ? (<Lottie id="cat" animationData={myAnimationCarError} loop={true} play={true} />)
                 : (
                     <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-6 g-3">
@@ -71,8 +76,8 @@ export default function Products() {
                                                 {/* Average */}
                                                 <li>
                                                     <Stars 
-                                                        data={thisData}
-                                                    /> 
+                                                        data={thisData.vote_average}
+                                                    />
                                                 </li>
                                             </ul>
                                         </div>
