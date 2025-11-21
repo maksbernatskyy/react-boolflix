@@ -6,6 +6,8 @@ import Flag from "react-world-flags"
 import flags from "../../public/flags"
 import { BASE_URL_IMG } from "../api/config"
 import Stars from "../components/Stars"
+import Lottie from "react-lottie-player"
+import myAnimation from "../assets/Cute bear dancing.json"
 
 
 export default function Products() {
@@ -31,8 +33,8 @@ export default function Products() {
     return (
         <>
           <div className="container">
-            <div className="mb-5">
-                <h1 className="text-uppercase">products</h1>
+            <div>
+                <Lottie animationData={myAnimation} loop={true} play={true} />
             </div>
             <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-6 g-3">
                 {
