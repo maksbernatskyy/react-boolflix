@@ -1,4 +1,10 @@
-export default function Stars(data) {
+import { useEffect } from "react"
+
+export default function Stars({data}) {
+
+    useEffect(() => {
+        console.log(data)
+    }, [])
 
     return (
         <>
