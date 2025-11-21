@@ -39,10 +39,12 @@ export default function Products() {
     return (
         <>
           <div className="container">
+            {/* Bear */}
             <div>
                 <Lottie id="bear" animationData={myAnimationBear} loop={true} play={true} />
             </div>
 
+            {/* Cards */}
             {
                 count === 1 ? '' :
                 data.length === 0 ? (<Lottie id="cat" animationData={myAnimationCarError} loop={true} play={true} />)
