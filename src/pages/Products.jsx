@@ -38,7 +38,9 @@ export default function Products() {
                     data.map((thisData) => thisData.original_language !== 'ru' && (                      
                         <div key={thisData.id} className="col">
                             <div className="card bg-black text-white border-danger h-100">
-                                <img id="image" src={thisData.poster_path ? `${BASE_URL_IMG}${thisData.poster_path}` : `${BASE_URL_IMG}${thisData.backdrop_path}`} alt="" />
+                                {
+                                    thisData.backdrop_path && <img id="image" src={thisData.poster_path ? `${BASE_URL_IMG}${thisData.poster_path}` : `${BASE_URL_IMG}${thisData.backdrop_path}`} alt="" />
+                                }
                                 <div className="card-body">
                                     <ul className="list-unstyled">
                                         {/* Title */}
@@ -59,11 +61,11 @@ export default function Products() {
                                         </li>
                                         {/* Average */}
                                         <li>
-                                            <span>{Math.ceil(thisData.vote_average) / 2 >= 1 ? <i className="bi bi-star-fill"></i> : <i className="bi bi-star"></i>}</span>
-                                            <span>{Math.ceil(thisData.vote_average) / 2 >= 2 ? <i className="bi bi-star-fill"></i> : <i className="bi bi-star"></i>}</span>
-                                            <span>{Math.ceil(thisData.vote_average) / 2 >= 3 ? <i className="bi bi-star-fill"></i> : <i className="bi bi-star"></i>}</span>
-                                            <span>{Math.ceil(thisData.vote_average) / 2 >= 4 ? <i className="bi bi-star-fill"></i> : <i className="bi bi-star"></i>}</span>
-                                            <span>{Math.ceil(thisData.vote_average) / 2 == 5 ? <i className="bi bi-star-fill"></i> : <i className="bi bi-star"></i>}</span>
+                                            <span>{Math.ceil(thisData.vote_average / 2) >= 1 ? <i className="bi bi-star-fill"></i> : <i className="bi bi-star"></i>}</span>
+                                            <span>{Math.ceil(thisData.vote_average / 2) >= 2 ? <i className="bi bi-star-fill"></i> : <i className="bi bi-star"></i>}</span>
+                                            <span>{Math.ceil(thisData.vote_average / 2) >= 3 ? <i className="bi bi-star-fill"></i> : <i className="bi bi-star"></i>}</span>
+                                            <span>{Math.ceil(thisData.vote_average / 2) >= 4 ? <i className="bi bi-star-fill"></i> : <i className="bi bi-star"></i>}</span>
+                                            <span>{Math.ceil(thisData.vote_average / 2) === 5 ? <i className="bi bi-star-fill"></i> : <i className="bi bi-star"></i>}</span>
                                         </li>
                                     </ul>
                                 </div>
