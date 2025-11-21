@@ -5,6 +5,7 @@ import { API_KEY } from "../api/config"
 import Flag from "react-world-flags"
 import flags from "../../public/flags"
 import { BASE_URL_IMG } from "../api/config"
+import Stars from "../components/Stars"
 
 
 export default function Products() {
@@ -61,13 +62,9 @@ export default function Products() {
                                         </li>
                                         {/* Average */}
                                         <li>
-                                            <div className="d-flex gap-1">
-                                                <span className="text-warning">{Math.ceil(thisData.vote_average / 2) >= 1 ? <i className="bi bi-star-fill"></i> : <i className="bi bi-star"></i>}</span>
-                                                <span className="text-warning">{Math.ceil(thisData.vote_average / 2) >= 2 ? <i className="bi bi-star-fill"></i> : <i className="bi bi-star"></i>}</span>
-                                                <span className="text-warning">{Math.ceil(thisData.vote_average / 2) >= 3 ? <i className="bi bi-star-fill"></i> : <i className="bi bi-star"></i>}</span>
-                                                <span className="text-warning">{Math.ceil(thisData.vote_average / 2) >= 4 ? <i className="bi bi-star-fill"></i> : <i className="bi bi-star"></i>}</span>
-                                                <span className="text-warning">{Math.ceil(thisData.vote_average / 2) === 5 ? <i className="bi bi-star-fill"></i> : <i className="bi bi-star"></i>}</span>
-                                            </div>
+                                           <Stars 
+                                             data={thisData}
+                                           /> 
                                         </li>
                                     </ul>
                                 </div>
